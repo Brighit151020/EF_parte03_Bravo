@@ -1,0 +1,26 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+    <!DOCTYPE html>
+<html>
+<head>
+
+</head>
+<body>
+    <h1>Listado de Países</h1>
+    <div class="listapais">
+    <ul>
+        {% for pais in paises %}
+        <li>
+            {{ pais.nombre }} (Código: {{ pais.codigo }}) - Población: {{ pais.poblacion }} - Estado: {% if pais.estado %}Activo{% else %}Inactivo{% endif %}
+            <a href="{% url 'eliminar_pais' pais.id %}">Eliminar</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
+
+
+{% endblock %}

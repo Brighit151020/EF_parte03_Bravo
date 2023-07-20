@@ -1,7 +1,26 @@
 {% extends 'layout.html' %}
-{% block title %}
-{{titulo}}
-{% endblock %}
+
 {% block content %}
-<h1 class="title">Registrar Nuevo País</h1>
+
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post">
+        {% csrf_token %}
+        <label for="codigo">Código:</label>
+        <input type="text" name="codigo" id="codigo">
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="poblacion">Población:</label>
+        <input type="number" name="poblacion" id="poblacion">
+        <label for="estado">Estado:</label>
+        <input type="checkbox" name="estado" id="estado">
+        <input type="submit" value="Registrar País">
+    </form>
+
+
 {% endblock %}
