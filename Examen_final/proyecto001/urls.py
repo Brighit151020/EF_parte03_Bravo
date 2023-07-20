@@ -25,4 +25,11 @@ urlpatterns = [
     path('eliminar_pais/<int:id_pais>/', views.eliminar_pais, name='eliminar_pais'),
     path('editoriales/',views.editoriales, name = "editoriales"),
     path('crear_editorial/',views.crear_editorial, name = "crear_editorial"),
+     path('eliminar_editorial/<int:id_editorial>/', views.eliminar_editorial, name='eliminar_editorial'),
 ]
+
+from django.conf import settings
+from django.conf.urls.static import static
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

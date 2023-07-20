@@ -1,7 +1,26 @@
 {% extends 'layout.html' %}
-{% block title %}
-{{titulo}}
-{% endblock %}
+
 {% block content %}
-<h1 class="title">Agregar Nuevo Editorial</h1>
+<h1 class="title">Agregar Nueva Editorial</h1>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="nombre">Nombre:</label>
+        <input type="text" name="nombre" id="nombre">
+        <label for="url">URL:</label>
+        <input type="url" name="url" id="url">
+        <label for="imagen">Imagen:</label>
+        <input type="file" name="imagen" id="imagen">
+        <label for="estado">Estado:</label>
+        <input type="checkbox" name="estado" id="estado">
+        <input type="submit" value="Registrar Editorial">
+    </form>
+
+
 {% endblock %}

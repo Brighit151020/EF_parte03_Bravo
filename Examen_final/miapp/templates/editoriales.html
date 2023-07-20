@@ -1,6 +1,31 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<h1 class="title">Listado de Editoriales</h1>
-
+    <h1>Listado de Editoriales</h1>
+    <table>
+        <tr>
+            <th>Nombre</th>
+            <th>URL</th>
+            <th>Imagen</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for editorial in editoriales %}
+        <tr>
+            <td>{{ editorial.nombre }}</td>
+            <td><a href="{{ editorial.url }}">{{ editorial.url }}</a></td>
+            <td>
+                {% if editorial.imagen %}
+                    <img src="{{ editorial.imagen.url }}" width="50">
+                {% else %}
+                    <span class="no-image">Sin imagen</span>
+                {% endif %}
+            </td>
+            <td>{% if editorial.estado %}Activo{% else %}Inactivo{% endif %}</td>
+            <td class="actions">
+                <a href="{% url 'eliminar_editorial' editorial.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
 {% endblock %}
